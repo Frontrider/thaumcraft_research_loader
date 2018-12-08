@@ -104,6 +104,10 @@ public class TCResearchLoader {
                         }
                     })
                     .flatMap(s -> Arrays.stream(s.split("\n")))
+                    .map(s->{
+                        String[] split = s.split(":");
+                        return split[0]+":research/"+split[1];
+                    })
                     .forEach(s -> ThaumcraftApi.registerResearchLocation(new ResourceLocation(s.toLowerCase())));
 
         } catch (Exception e) {
